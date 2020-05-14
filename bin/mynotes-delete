@@ -1,0 +1,11 @@
+#!/bin/bash
+
+ROOT=`dirname $0`
+
+while [[ $# -gt 0 ]]
+do
+	noteID=$1
+	shift;
+	rm -f $ROOT/../notes/$noteID
+	echo "Note $noteID removed"
+done

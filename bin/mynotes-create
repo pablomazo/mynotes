@@ -1,0 +1,36 @@
+#!/bin/bash
+# Create note.
+
+# Path to this executable.
+ROOT=`dirname $0`
+
+id=`date +%d%m%Y%H%M%S`
+created=`date +%d/%m/%Y`
+#task=
+group='No definido'
+date='No definido'
+priority='Media'
+
+while getopts ":d:g:p:t:" opt; do
+	case $opt in
+		d) date=$OPTARG;;
+		g) group=$OPTARG;;
+		p) priority=$OPTARG;;
+		t) task=$OPTARG;;
+	esac
+done
+
+if [ -z "$task" ]
+then
+	echo 'Some task must be specified...'
+else
+	file=$ROOT/../notes/$id
+	echo 'ID:' $id > $file
+	echo 'Date created:' $created >> $file
+	echo 'Task:' $task >> $file
+	echo 'Group:' $group >> $file
+	echo 'Date Limit:' $date >> $file
+	echo 'Priority:' $priority >> $file
+	echo "Task created: $id"
+	cat $file
+fi

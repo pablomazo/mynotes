@@ -1,0 +1,11 @@
+#!/bin/bash
+# Edit note
+
+# Path to this executable.
+ROOT=`dirname $0`
+
+noteID=$1
+
+vi $ROOT/../notes/$noteID
+echo "Note $noteID succesfully edited"
+cat $ROOT/../notes/$noteID

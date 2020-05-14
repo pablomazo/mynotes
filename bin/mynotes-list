@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Path to this executable.
+ROOT=`dirname $0`
+
+printf "%14s %15s %15s %15s %50s \n" "ID" "Group" "Date Limit" "Priority" "Task"
+if [ `ls -A	$ROOT/../notes/` ]; then
+	for file in $ROOT/../notes/*; 
+	do 
+		#echo $file
+		id=`grep 'ID' $file | cut -d ':' -f 2`
+		task=`grep 'Task' $file | cut -d ':' -f 2`
+		group=`grep 'Group' $file | cut -d ':' -f 2`
+		date=`grep 'Date Limit' $file | cut -d ':' -f 2`
+		priority=`grep 'Priority' $file | cut -d ':' -f 2`
+		printf "%14s %15s %15s %15s %50s \n" "$id" "$group" "$date" "$priority" "$task"
+	done
+fi
