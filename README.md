@@ -3,7 +3,7 @@
 Very simple notes manager from bash terminal.
 
 ## First step:
-Add this lines to your .basrc directory
+Add this lines to your .bashrc directory
 ```
 # For MyNotes
 export PATH=<path_to_mynotes>/mynotes/bin:$PATH
