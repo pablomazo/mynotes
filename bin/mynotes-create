@@ -4,7 +4,7 @@
 # Path to this executable.
 ROOT=`dirname $0`
 
-id=`date +%d%m%Y%H%M%S`
+id=`date +%Y%m%d%H%M%S`
 created=`date +%d/%m/%Y`
 #task=
 group='No definido'
