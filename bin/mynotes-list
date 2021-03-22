@@ -1,11 +1,14 @@
 #!/bin/bash
 
-# Path to this executable.
 ROOT=`dirname $0`
+source $ROOT/../mynotes-settings
+
+# Path to this executable.
+ROOT=$MYNOTES_FOLDER/notes/
 
 printf "%14s %15s %15s %15s %50s \n" "ID" "Group" "Date Limit" "Priority" "Task"
-if [ "`ls -A	$ROOT/../notes/`" ]; then
-	for file in $ROOT/../notes/*; 
+if [ "`ls -A	$ROOT/`" ]; then
+	for file in $ROOT/*; 
 	do 
 		#echo $file
 		id=`grep 'ID' $file | cut -d ':' -f 2`

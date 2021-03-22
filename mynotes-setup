@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# Script to setup mynotes
+
+# Defaults
+MYNOTES_FOLDER=~/.mynotes
+MYNOTES_EDITOR=vi
+
+# Set folder path for mynotes.
+read -p "mynotes folder [default: ~/.mynotes]: " MYNOTES_FOLDER
+MYNOTES_FOLDER=${MYNOTES_FOLDER:-~/.mynotes}
+echo $MYNOTES_FOLDER
+
+# Check if the folder already exists.
+if [ -d $MYNOTES_FOLDER ]
+then
+	echo "$MYNOTES_FOLDER exists. Please use another folder"
+	return	
+else
+	mkdir $MYNOTES_FOLDER
+	mkdir $MYNOTES_FOLDER/notes/
+fi
+
+# Set editor for mynotes.
+read -p "mynotes editor [default: vim]: " MYNOTES_EDITOR
+MYNOTES_EDITOR=${MYNOTES_EDITOR:-vim}
+
+# Copy program to mynotes folder:
+cp -r bin $MYNOTES_FOLDER
+
+# Save settings:
+MYNOTES_SETTINGS=$MYNOTES_FOLDER/mynotes-settings
+
+echo '#!/bin/bash' > $MYNOTES_SETTINGS
+echo 'export PATH='$MYNOTES_FOLDER'/bin:$PATH' >> $MYNOTES_SETTINGS
+echo 'MYNOTES_FOLDER='$MYNOTES_FOLDER >> $MYNOTES_SETTINGS
+echo 'MYNOTES_EDITOR='$MYNOTES_EDITOR >> $MYNOTES_SETTINGS
+
+# Modify bashrc to source $MYNOTES_SETTINGS
+read -p "Add source $MYNOTES_SETTINGS to bashrc? [Y/n]: " s
+s=${s:-Y}
+
+if [ $s == y ] || [ $s == Y ]
+then
+	echo "" >> ~/.bashrc
+	echo "#------------------------" >> ~/.bashrc
+	echo "#Added by mynotes" >> ~/.bashrc
+	echo 'export PATH='$MYNOTES_FOLDER'/bin:$PATH' >> ~/.bashrc
+	echo "#------------------------" >> ~/.bashrc
+	echo "" >> ~/.bashrc
+fi
