@@ -3,7 +3,7 @@
 Very simple notes manager from bash terminal.
 
 ## First step:
-Add this lines to your .basrc directory
+Add this lines to your .bashrc directory
 ```
 # For MyNotes
 export PATH=<path_to_mynotes>/mynotes/bin:$PATH
@@ -20,7 +20,7 @@ MyNotes contains 4 scripts:
   
   Example: 
   ```
-  mynotes-create -t "Do this super importat thing" -d "Now" -p "Super high" -g "Work"
+  mynotes-create -t "Do this super important thing" -d "Now" -p "Super high" -g "Work"
   ```
 - mynotes-list: Will list all your current notes.
 - mynotes-edit: Edit a note. It will be opened with vim editor. If you would like another one you can edit this script 
