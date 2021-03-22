@@ -1,11 +1,14 @@
 #!/bin/bash
 # Edit note
 
-# Path to this executable.
 ROOT=`dirname $0`
+source $ROOT/../mynotes-settings
+
+# Path to this executable.
+ROOT=$MYNOTES_FOLDER/notes/
 
 noteID=$1
 
-vi $ROOT/../notes/$noteID
+$MYNOTES_EDITOR $ROOT/$noteID
 echo "Note $noteID succesfully edited"
-cat $ROOT/../notes/$noteID
+cat $ROOT/$noteID

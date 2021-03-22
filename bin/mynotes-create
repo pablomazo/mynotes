@@ -1,8 +1,11 @@
 #!/bin/bash
 # Create note.
 
-# Path to this executable.
 ROOT=`dirname $0`
+source $ROOT/../mynotes-settings
+
+# Path to this executable.
+ROOT=$MYNOTES_FOLDER/notes/
 
 id=`date +%Y%m%d%H%M%S`
 created=`date +%d/%m/%Y`
@@ -24,7 +27,7 @@ if [ -z "$task" ]
 then
 	echo 'Some task must be specified...'
 else
-	file=$ROOT/../notes/$id
+	file=$ROOT/$id
 	echo 'ID:' $id > $file
 	echo 'Date created:' $created >> $file
 	echo 'Task:' $task >> $file
